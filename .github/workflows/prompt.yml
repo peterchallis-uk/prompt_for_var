@@ -1,25 +1,17 @@
-name: Prompt for Variable
+name: Prompt for Input
 
 on:
   workflow_dispatch:
     inputs:
-      target_env:
-        description: 'Target environment (e.g., staging, production)'
+      user_message:
+        description: 'Enter your message or value'
         required: true
-        default: 'staging'
+        default: 'Hello from GitHub Actions!'
 
 jobs:
-  run-playbook:
+  echo-input:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Run Ansible Playbook
-        env:
-          TARGET_ENV: ${{ github.event.inputs.target_env }}
-        run: |
-          echo "Selected environment: $TARGET_ENV"
-          # Replace this with your actual playbook command
-          ansible-playbook deploy.yml --extra-vars "env=$TARGET_ENV"
+      - name: Show input value
+        run: echo "You entered: ${{ github.event.inputs.user_message }}"
