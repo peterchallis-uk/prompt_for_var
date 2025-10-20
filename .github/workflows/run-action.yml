@@ -1,0 +1,19 @@
+name: Run My Action
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Enter a message'
+        required: true
+        default: 'Hello from GitHub Actions!'
+
+jobs:
+  run-action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./my-action
+        with:
+          message: ${{ github.event.inputs.message }}
