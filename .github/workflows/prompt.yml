@@ -7,8 +7,3 @@ on:
         description: 'Enter your message or value'
         required: true
         default: 'Hello from GitHub Actions!'
-
-jobs:
-  echo-input:
-    runs-on: ubuntu-latest
-
