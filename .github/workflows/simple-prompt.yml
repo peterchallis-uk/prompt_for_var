@@ -1,4 +1,4 @@
-name: Simple Prompt
+name: Use Echo Action
 
 on:
   workflow_dispatch:
@@ -9,9 +9,11 @@ on:
         default: 'Hello from GitHub Actions!'
 
 jobs:
-  echo:
+  run-action:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Echo the message
-        run: echo "You entered: ${{ github.event.inputs.message }}"
+      - uses: actions/checkout@v4
+      - uses: ./my-action
+        with:
+          message: ${{ github.event.inputs.message }}
