@@ -14,4 +14,6 @@ jobs:
 
     steps:
       - name: Show input value
-        run: echo "You entered: ${{ github.event.inputs.user_message }}"
+        env:
+          USER_MESSAGE: ${{ github.event.inputs.user_message }}
+        run: echo "You entered: $USER_MESSAGE"
