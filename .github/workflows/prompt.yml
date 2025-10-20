@@ -11,12 +11,13 @@ on:
 jobs:
   run-playbook:
     runs-on: ubuntu-latest
-    env:
-      TARGET_ENV: ${{ inputs.target_env }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set environment variable
+        run: echo "TARGET_ENV=${{ inputs.target_env }}" >> $GITHUB_ENV
 
       - name: Display selected environment
         run: echo "Selected environment: $TARGET_ENV"
