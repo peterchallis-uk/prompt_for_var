@@ -3,15 +3,10 @@ name: Prompt for Input
 on:
   workflow_dispatch:
     inputs:
-      user_message:
-        description: 'Enter your message or value'
+      env:
+        description: 'Environment'
         required: true
-        default: 'Hello from GitHub Actions!'
-
-jobs:
-  echo-input:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Show input value
-        run: echo "You entered: ${{ inputs.user_message }}"
+        default: 'staging'
+      version:
+        description: 'Version to deploy'
+        required: true
