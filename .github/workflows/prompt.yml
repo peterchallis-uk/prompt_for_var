@@ -11,18 +11,16 @@ on:
 jobs:
   run-playbook:
     runs-on: ubuntu-latest
-    env:
-      TARGET_ENV: ${{ inputs.target_env }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Display selected environment
-        run: echo "Selected environment: $TARGET_ENV"
+        run: echo "Selected environment: ${{ inputs.target_env }}"
 
       - name: Run Ansible Playbook
         run: |
-          echo "Triggering Ansible playbook with env=$TARGET_ENV"
+          echo "Triggering Ansible playbook with env=${{ inputs.target_env }}"
           # Example command — replace with your actual playbook call
-          ansible-playbook deploy.yml --extra-vars "env=$TARGET_ENV"
+          ansible-playbook deploy.yml --extra-vars "env=${{ inputs.target_env }}"
