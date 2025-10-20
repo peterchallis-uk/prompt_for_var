@@ -7,3 +7,13 @@ on:
         description: 'Enter your message or value'
         required: true
         default: 'Hello from GitHub Actions!'
+
+jobs:
+  echo-input:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show input value
+        env:
+          USER_MESSAGE: ${{ inputs.user_message }}
+        run: echo "You entered: $USER_MESSAGE"
