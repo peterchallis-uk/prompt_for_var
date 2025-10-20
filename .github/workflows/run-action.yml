@@ -29,6 +29,6 @@ jobs:
         working-directory: ./my-action
 
       - name: Run custom action
-        uses: ./my-actions
+        uses: ./my-action
         with:
           message: ${{ github.event.inputs.message }}
