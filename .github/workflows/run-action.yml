@@ -1,9 +1,20 @@
+name: Run My Action
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Enter a message'
+        required: true
+        default: 'Hello from GitHub Actions!'
+
 jobs:
   run-action:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -14,8 +25,8 @@ jobs:
         run: npm install
         working-directory: ./my-action
 
-      - name: Build action
-        run: npm run build
+      - name: Compile TypeScript
+        run: npx tsc -p tsconfig.build.json
         working-directory: ./my-action
 
       - name: Run custom action
