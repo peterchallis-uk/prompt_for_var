@@ -22,11 +22,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./my-actions
+        working-directory: ./my-action
 
       - name: Compile TypeScript
         run: npx tsc
-        working-directory: ./my-actions
+        working-directory: ./my-action
 
       - name: Run custom action
         uses: ./my-actions
