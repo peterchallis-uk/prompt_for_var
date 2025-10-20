@@ -13,5 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set input as environment variable
+        run: echo "USER_MESSAGE=${{ inputs.user_message }}" >> $GITHUB_ENV
+
       - name: Show input value
-        run: echo "You entered: ${{ github.event.inputs.user_message }}"
+        run: echo "You entered: $USER_MESSAGE"
