@@ -16,14 +16,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set environment variable
-        run: echo "TARGET_ENV=${{ github.event.inputs.target_env }}" >> $GITHUB_ENV
-
-      - name: Display selected environment
-        run: echo "Selected environment: $TARGET_ENV"
-
       - name: Run Ansible Playbook
+        env:
+          TARGET_ENV: ${{ github.event.inputs.target_env }}
         run: |
-          echo "Triggering Ansible playbook with env=$TARGET_ENV"
+          echo "Selected environment: $TARGET_ENV"
           # Replace this with your actual playbook command
           ansible-playbook deploy.yml --extra-vars "env=$TARGET_ENV"
