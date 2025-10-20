@@ -12,8 +12,3 @@ jobs:
   echo-input:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Show input value
-        env:
-          USER_MESSAGE: ${{ github.event.inputs.user_message }}
-        run: echo "You entered: $USER_MESSAGE"
