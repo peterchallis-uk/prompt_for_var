@@ -14,6 +14,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: ./my-action
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./my-actions
+
+      - name: Compile TypeScript
+        run: npx tsc
+        working-directory: ./my-actions
+
+      - name: Run custom action
+        uses: ./my-actions
         with:
           message: ${{ github.event.inputs.message }}
